@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Module 1 - Practice Mock Exam - Business & Management Principles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            color: #2b303a;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            overflow-x: hidden;
+        }
+
+        /* Custom LMS Button Styles */
+        .btn-lms-green {
+            background: linear-gradient(180deg, #15803d 0%, #0e6027 100%);
+            color: #ffffff;
+            font-weight: 600;
+            border: 1px solid #0a471c;
+            border-radius: 4px;
+            padding: 8px 18px;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            touch-action: manipulation;
+        }
+        .btn-lms-green:hover, .btn-lms-green:active {
+            background: #0e6027;
+        }
+
+        .btn-lms-cancel {
+            background-color: #ffffff;
+            border: 1px solid #a3a3a3;
+            color: #333333;
+            font-weight: 500;
+            border-radius: 4px;
+            padding: 8px 18px;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            touch-action: manipulation;
+        }
+        .btn-lms-cancel:hover, .btn-lms-cancel:active {
+            background-color: #f3f4f6;
+        }
+
+        /* Case Study Callout Box */
+        .case-study-box {
+            background-color: #f0f4f8;
+            border: 1px solid #d0dbe5;
+            border-left: 4px solid #0056b3;
+            border-radius: 6px;
+            padding: 12px 14px;
+            margin: 12px 0;
+            box-sizing: border-box;
+            line-height: 1.5;
+            font-size: 13.5px;
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(2px);
+        }
+
+        /* Radio Option Label for Mobile Touch */
+        .option-label {
+            cursor: pointer;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 14px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            background-color: #ffffff;
+            transition: background 0.15s ease, border-color 0.15s ease;
+            min-height: 48px;
+            touch-action: manipulation;
+        }
+        .option-label:hover, .option-label:active {
+            background-color: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+
+        .custom-radio {
+            accent-color: #0056b3;
+            width: 22px;
+            height: 22px;
+            margin-top: 1px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-white min-h-screen text-gray-800 antialiased relative pb-20">
+
+    <!-- LMS Breadcrumb Navigation Header -->
+    <header class="border-b border-gray-200 bg-white px-3 py-3 sm:px-6">
+        <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm text-gray-600">
+            <div class="flex items-center gap-1.5 flex-wrap">
+                <span class="text-blue-700 hover:underline cursor-pointer"><i class="fa-solid fa-house mr-1"></i> Portfolio</span>
+                <span>&gt;</span>
+                <span class="text-blue-700 hover:underline cursor-pointer truncate max-w-[160px] sm:max-w-none">Certificate in Business Management Skills</span>
+                <span>&gt;</span>
+                <span class="font-semibold text-gray-800 truncate max-w-[180px] sm:max-w-none">Module 1-Practice Mock Exam</span>
+            </div>
+            <div class="text-[11px] bg-gray-100 text-gray-600 px-2 py-1 rounded border border-gray-200">
+                <i class="fa-solid fa-lock text-gray-500 mr-1"></i> CBMS - OBISL CAMPUS
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-4xl mx-auto px-3 sm:px-6 py-4 sm:py-6">
+
+        <!-- VIEW 1: INITIAL ATTEMPT CONFIRMATION -->
+        <section id="view-step-1" class="space-y-4 sm:space-y-6">
+            <h1 class="text-lg sm:text-2xl font-bold text-slate-800">
+                Module 1-Practice Mock Exam-Business & Management Principles
+            </h1>
+
+            <!-- Orange Attempt Warning Bar -->
+            <div class="w-full bg-[#f97316] text-white p-3.5 sm:p-4 rounded-md shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+                <div class="text-xs sm:text-base font-medium leading-relaxed">
+                    Beware! Only one attempt remaining. By clicking the "Continue" button, a new attempt is recorded.
+                </div>
+                <div class="flex items-center gap-2 w-full sm:w-auto justify-center sm:justify-end">
+                    <button onclick="resetToInitial()" class="btn-lms-cancel text-xs sm:text-sm w-1/2 sm:w-auto">
+                        Cancel
+                    </button>
+                    <button onclick="goToStep2()" class="btn-lms-green text-xs sm:text-sm w-1/2 sm:w-auto">
+                        Continue
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 2: PRE-EXAM WARNING & RULES VIEW -->
+        <section id="view-step-2" class="hidden space-y-6">
+            <h1 class="text-lg sm:text-2xl font-bold text-slate-800">
+                Module 1-Practice Mock Exam-Business & Management Principles
+            </h1>
+
+            <!-- Pre-Exam Warning Card Box -->
+            <div class="bg-gray-100/90 border border-gray-200 rounded-lg p-5 sm:p-8 text-center max-w-2xl mx-auto shadow-xs my-4 sm:my-6">
+                <div class="text-amber-500 text-3xl sm:text-4xl mb-2 sm:mb-3">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <h2 class="text-base sm:text-lg font-bold text-gray-800 mb-2">Warning!</h2>
+                <p class="text-gray-700 text-xs sm:text-base max-w-lg mx-auto mb-5 sm:mb-6 leading-relaxed">
+                    You have entered the examination area.<br class="hidden sm:block">
+                    Any parallel action, such as redirecting to a new page or opening a new window, will lead to the automatic cancellation of your attempt.
+                </p>
+                <button onclick="enterExam()" class="btn-lms-green text-sm sm:text-base px-6 py-2.5 w-full sm:w-auto">
+                    Enter the exam <i class="fa-solid fa-right-to-bracket text-xs sm:text-sm ml-1.5"></i>
+                </button>
+            </div>
+
+            <!-- RULES AND GUIDELINES BLOCK -->
+            <div class="exam-guidelines-container max-w-[600px] w-full mx-auto font-sans text-gray-800 leading-normal p-3 border border-gray-200 rounded-lg bg-white shadow-xs">
+                
+                <!-- Banner -->
+                <div class="reading-time-banner bg-[#e6f0fa] border border-[#b8daff] border-l-4 border-l-[#0056b3] rounded p-2.5 mb-4 text-xs sm:text-sm text-[#004085] text-center">
+                    ⏱️ <strong>Note:</strong> Allocate <strong>2 minutes</strong> to review these rules. Once finished, return to the top of the page to launch your exam.
+                </div>
+
+                <!-- Header -->
+                <div class="header-section text-center border-b-2 border-[#0056b3] pb-3 mb-4">
+                    <h3 class="text-[11px] sm:text-xs uppercase tracking-wider text-gray-500 font-semibold m-0 mb-1">OBISL Campus</h3>
+                    <h1 class="text-base sm:text-lg text-[#0056b3] font-bold m-0 mb-1 leading-snug">
+                        Core Module 1 - Practice Mock Exam Guidelines<br>
+                        <span class="text-xs sm:text-sm font-normal text-[#0056b3]">(CBMS/CHRM/CMS)</span>
+                    </h1>
+                    <h2 class="text-xs sm:text-sm text-gray-700 font-semibold m-0 mb-2">Official Rules &amp; Procedures</h2>
+                    <span class="inline-block bg-[#e6f0fa] text-[#0056b3] px-2.5 py-0.5 text-[10px] sm:text-[11px] font-bold uppercase rounded">Certificate Level</span>
+                </div>
+
+                <!-- Stats Table -->
+                <div class="stats-table bg-[#f8f9fa] border border-[#dee2e6] rounded-md mb-4 overflow-hidden text-xs sm:text-sm">
+                    <div class="border-b border-[#dee2e6] p-2.5 flex flex-col">
+                        <span class="font-bold text-[10px] sm:text-[11px] text-gray-500 uppercase tracking-wide">Time Allocation</span>
+                        <span class="mt-0.5 text-gray-900 font-medium">17 minutes total duration.</span>
+                    </div>
+                    <div class="border-b border-[#dee2e6] p-2.5 flex flex-col">
+                        <span class="font-bold text-[10px] sm:text-[11px] text-gray-500 uppercase tracking-wide">Test Structure</span>
+                        <span class="mt-0.5 text-gray-900 font-medium">1 Module | 5 Case Study Questions</span>
+                    </div>
+                    <div class="p-2.5 flex flex-col">
+                        <span class="font-bold text-[10px] sm:text-[11px] text-gray-500 uppercase tracking-wide">Scoring Mechanism</span>
+                        <span class="mt-0.5 text-gray-900 font-medium">1 mark per question (Total: 5 Marks) | Pass mark: 2 Marks (40%)</span>
+                    </div>
+                </div>
+
+                <!-- Instructions -->
+                <div class="instructions-section mb-4 text-xs sm:text-sm">
+                    <ul class="list-none p-0 m-0 space-y-2.5">
+                        <li class="flex items-start">
+                            <span class="text-[#0056b3] font-bold mr-2 text-base leading-none">•</span>
+                            <span class="text-gray-700 leading-snug"><strong class="text-gray-900">Passing Criteria:</strong> Achieve at least 40% (minimum 2/5 marks) to pass.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#0056b3] font-bold mr-2 text-base leading-none">•</span>
+                            <span class="text-gray-700 leading-snug"><strong class="text-gray-900">Single Device Access:</strong> Keep only one active login session. Logging in from multiple devices or tabs will cancel your attempt.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#0056b3] font-bold mr-2 text-base leading-none">•</span>
+                            <span class="text-gray-700 leading-snug"><strong class="text-gray-900">Window &amp; Screen Monitoring:</strong> Remain on this exam window at all times. Navigating away, switching tabs, or minimizing the browser window for any reason will result in automatic submission or cancellation.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#0056b3] font-bold mr-2 text-base leading-none">•</span>
+                            <span class="text-gray-700 leading-snug"><strong class="text-gray-900">Open-Book Resources:</strong> You may refer to printed notes or use a separate device to view study materials during the exam. Open all study materials on another device before starting, and maintain a single active login session on <strong>lms.obisl.com</strong>.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[#0056b3] font-bold mr-2 text-base leading-none">•</span>
+                            <span class="text-gray-700 leading-snug"><strong class="text-gray-900">Results:</strong> Exam results will be displayed immediately upon submission.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Critical Note -->
+                <div class="critical-note bg-[#fff8e6] border border-[#ffeeba] border-l-4 border-l-[#ffc107] rounded p-2.5 text-xs text-[#856404]">
+                    <strong class="uppercase block mb-1 text-[10px] tracking-wide text-[#856404]">Critical Note:</strong>
+                    <p class="m-0 leading-relaxed">Opening the portal starts an unpausable timer. Only a single attempt is permitted. Ensure you have a stable internet connection before starting.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- VIEW 3: LIVE EXAM QUESTIONS INTERFACE -->
+        <section id="view-step-3" class="hidden space-y-6 pb-24">
+            <div class="border-b border-gray-200 pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <h1 class="text-base sm:text-xl font-bold text-slate-800">
+                    Module 1-Practice Mock Exam-Business & Management Principles
+                </h1>
+                <span class="text-[11px] sm:text-xs bg-blue-50 text-blue-800 border border-blue-200 px-2.5 py-1 rounded font-semibold self-start sm:self-auto">
+                    5 Questions • 5 Marks Total
+                </span>
+            </div>
+
+            <form id="exam-form" onsubmit="event.preventDefault(); submitExam();">
+                <!-- QUESTIONS INJECTED DYNAMICALLY -->
+                <div id="questions-container" class="space-y-6 sm:space-y-8"></div>
+
+                <!-- SUBMIT / CANCEL ACTIONS -->
+                <div class="pt-6 border-t border-gray-200 flex flex-row items-center justify-end gap-3">
+                    <button type="button" onclick="triggerCancellationWarning()" class="btn-lms-cancel text-xs sm:text-sm w-1/2 sm:w-auto">
+                        Cancel
+                    </button>
+                    <button type="button" onclick="submitExam()" class="btn-lms-green text-xs sm:text-sm w-1/2 sm:w-auto">
+                        Final Submission
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- VIEW 4: RESULTS SUMMARY SCREEN -->
+        <section id="view-step-4" class="hidden space-y-6 max-w-lg mx-auto py-6 text-center">
+            <div class="bg-white border border-gray-200 rounded-lg p-5 sm:p-8 shadow-xs">
+                <div id="score-icon" class="text-4xl sm:text-5xl mb-3 text-emerald-600">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-1.5">Practice Mock Exam Submitted</h2>
+                <p class="text-gray-600 text-xs sm:text-sm mb-5">Your answers have been evaluated and recorded by the system.</p>
+
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-5 mb-5">
+                    <span class="text-[11px] uppercase font-bold tracking-wider text-gray-500 block mb-1">Final Score Result</span>
+                    <div id="score-display" class="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-1">
+                        0 / 5 Marks
+                    </div>
+                    <div id="percentage-display" class="text-xs sm:text-sm font-semibold text-gray-700">
+                        Percentage: 0%
+                    </div>
+                    <div id="status-badge" class="mt-3 inline-block px-3 py-1 rounded-full text-[11px] font-bold uppercase">
+                        Pass
+                    </div>
+                </div>
+
+                <p class="text-[11px] text-gray-500 mb-5 leading-relaxed">
+                    Note: Answers and explanations are hidden as per standard exam protocol. You may re-attempt the simulation for practice.
+                </p>
+
+                <button onclick="resetToInitial()" class="btn-lms-green w-full text-xs sm:text-sm py-2.5">
+                    Re-attempt Practice Mock Exam Simulation
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- STICKY COUNTDOWN TIMER BAR (Visible during Steps 2 & 3) -->
+    <div id="timer-bar-container" class="hidden fixed bottom-0 left-0 right-0 z-40 bg-[#c2410c] text-white py-2.5 px-3 sm:px-4 shadow-lg border-t border-orange-800">
+        <div class="max-w-4xl mx-auto flex items-center justify-between font-medium text-xs sm:text-sm">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-triangle-exclamation text-amber-200"></i>
+                <span><strong>Remaining time:</strong> <span id="timer-display">17:00</span></span>
+            </div>
+            <button onclick="triggerCancellationWarning()" class="text-[10px] sm:text-xs bg-black/20 hover:bg-black/40 px-2.5 py-1 rounded text-white/90 border border-white/20 transition">
+                Simulate Violation
+            </button>
+        </div>
+    </div>
+
+    <!-- WARNING MODAL FOR CANCELLATION -->
+    <div id="cancellation-modal" class="hidden fixed inset-0 z-50 modal-overlay flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-2xl max-w-sm w-full p-5 text-center border border-gray-200">
+            <!-- Orange Triangle Icon -->
+            <div class="mx-auto w-12 h-12 flex items-center justify-center rounded-full bg-orange-100 text-orange-500 text-2xl mb-3">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h3 class="text-base font-bold text-slate-800 mb-1.5">Warning!</h3>
+            <p class="text-gray-600 text-xs sm:text-sm mb-5">
+                Your attempt will be canceled.
+            </p>
+            <button onclick="confirmCancellation()" class="w-full bg-[#0070f3] hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded text-sm transition">
+                OK
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // MODULE 1: BUSINESS & MANAGEMENT PRINCIPLES DATA
+        const questionsData = [
+            {
+                id: 1,
+                title: "Question 1",
+                subtitle: "(Multiple Choice (Single Answer))",
+                questionText: "Which classical management framework is this company implementing to transition from an informal startup to an objective corporate structure?",
+                scenario: "A fast-growing enterprise intends to move away from its loose, relationship-driven startup approach—where administrative tasks are handled based on interpersonal familiarity—toward an objective organizational architecture. The executive leadership outlines a framework characterized by a strict hierarchical chain of command, explicitly written rules and standard operational regulations, functional division of specialized labor, and career progression based strictly on validated technical competence.",
+                options: [
+                    "A) Contingency Framework",
+                    "B) Max Weber's Bureaucratic Management",
+                    "C) Human Relations Movement",
+                    "D) Laissez-Faire Architecture"
+                ],
+                correctAnswer: 1 // Index B
+            },
+            {
+                id: 2,
+                title: "Question 2",
+                subtitle: "(Multiple Choice (Single Answer))",
+                questionText: "Which operational paradigm does the platform's strategic pivot best illustrate?",
+                scenario: "A high-tech educational services platform faces severe environmental instability when competitors introduce automated AI evaluation tools overnight. The company's current development framework requires a rigid two-year lifecycle with extensive milestone approvals, making their final products obsolete by the time they reach the market. To manage this highly volatile and ambiguous market environment, the platform's leadership completely abandons their linear process models and transitions to cross-functional, empowered teams that deliver small, functional system increments every two weeks.",
+                options: [
+                    "A) Bureaucratic model",
+                    "B) Scientific management",
+                    "C) Agile framework",
+                    "D) Tall structural engine"
+                ],
+                correctAnswer: 2 // Index C
+            },
+            {
+                id: 3,
+                title: "Question 3",
+                subtitle: "(Multiple Choice (Single Answer))",
+                questionText: "Which psychological phenomenon explains the sudden increase in production speed among the assembly line workers?",
+                scenario: "During an industrial efficiency evaluation, a factory supervisor notices that assembly line laborers significantly increase their production speed the moment they realize they are being closely observed by an industrial research team.",
+                options: [
+                    "A) Taylorism shift",
+                    "B) Operating leverage",
+                    "C) Hawthorne effect",
+                    "D) Objective alignment"
+                ],
+                correctAnswer: 2 // Index C
+            },
+            {
+                id: 4,
+                title: "Question 4",
+                subtitle: "(Multiple Choice (Single Answer))",
+                questionText: "Which structural profile describes the organizational configuration causing communication friction and operational delays?",
+                scenario: "An organization characterized by a very narrow span of control across all management levels continually introduces additional supervisory layers. Over time, this multi-tiered hierarchy causes severe communication delays, administrative friction, and slow executive decision-making.",
+                options: [
+                    "A) Flat structure",
+                    "B) Tall structure",
+                    "C) Matrix core",
+                    "D) Hybrid network"
+                ],
+                correctAnswer: 1 // Index B
+            },
+            {
+                id: 5,
+                title: "Question 5",
+                subtitle: "(Multiple Choice (Single Answer))",
+                questionText: "Which operational role within the organizational engine is being primarily performed by the executive?",
+                scenario: "An executive spends her entire workweek verifying policy compliance logs, checking automated payroll system configurations, and auditing legal adherence manuals across multiple business units.",
+                options: [
+                    "A) Manager",
+                    "B) Transformational leader",
+                    "C) Administrator",
+                    "D) Agile coach"
+                ],
+                correctAnswer: 2 // Index C
+            }
+        ];
+
+        let currentStep = 1;
+        let timerSeconds = 17 * 60; // 17 minutes total
+        let timerInterval = null;
+        let selectedAnswers = {};
+        let isExamActive = false;
+
+        // Render Questions into View 3
+        function renderQuestions() {
+            const container = document.getElementById('questions-container');
+            container.innerHTML = '';
+
+            questionsData.forEach((q) => {
+                const qBlock = document.createElement('div');
+                qBlock.className = 'bg-white border border-gray-200 rounded-lg p-4 sm:p-6 shadow-xs space-y-3 sm:space-y-4';
+                
+                let optionsHtml = '';
+                q.options.forEach((opt, optIndex) => {
+                    const isChecked = selectedAnswers[q.id] === optIndex ? 'checked' : '';
+                    optionsHtml += `
+                        <label class="option-label text-xs sm:text-sm text-gray-800">
+                            <input type="radio" name="question_${q.id}" value="${optIndex}" ${isChecked} onchange="selectOption(${q.id}, ${optIndex})" class="custom-radio">
+                            <span class="pt-0.5 leading-snug">${opt}</span>
+                        </label>
+                    `;
+                });
+
+                qBlock.innerHTML = `
+                    <div class="font-bold text-gray-800 text-sm sm:text-base border-b border-gray-100 pb-2">
+                        ${q.title} <span class="font-normal text-gray-500 text-xs sm:text-sm">${q.subtitle}</span>
+                    </div>
+                    
+                    <p class="text-xs sm:text-sm font-medium text-gray-800 leading-relaxed">
+                        ${q.questionText}
+                    </p>
+
+                    <!-- Case Study Callout Box -->
+                    <div class="case-study-box">
+                        <span class="block text-[10px] sm:text-[11px] font-bold text-[#0056b3] uppercase tracking-wider mb-1">
+                            Case Study Scenario
+                        </span>
+                        <p class="m-0 text-xs sm:text-sm text-[#2b303a] leading-relaxed">
+                            ${q.scenario}
+                        </p>
+                    </div>
+
+                    <!-- Options -->
+                    <div class="space-y-2.5 my-2 sm:my-3">
+                        ${optionsHtml}
+                    </div>
+
+                    <!-- Clear Choice Option -->
+                    <div class="flex justify-end pt-1">
+                        <button type="button" onclick="clearChoice(${q.id})" class="text-xs text-blue-700 hover:text-blue-900 border border-blue-300 rounded px-3 py-1.5 bg-blue-50/50 hover:bg-blue-100/50 transition">
+                            ✕ Clear Choice
+                        </button>
+                    </div>
+                `;
+
+                container.appendChild(qBlock);
+            });
+        }
+
+        function selectOption(questionId, optionIndex) {
+            selectedAnswers[questionId] = optionIndex;
+        }
+
+        function clearChoice(questionId) {
+            delete selectedAnswers[questionId];
+            const radios = document.getElementsByName(`question_${questionId}`);
+            radios.forEach(r => r.checked = false);
+        }
+
+        function showStep(stepNum) {
+            currentStep = stepNum;
+            document.getElementById('view-step-1').classList.add('hidden');
+            document.getElementById('view-step-2').classList.add('hidden');
+            document.getElementById('view-step-3').classList.add('hidden');
+            document.getElementById('view-step-4').classList.add('hidden');
+
+            document.getElementById(`view-step-${stepNum}`).classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goToStep2() {
+            showStep(2);
+            startTimer();
+            document.getElementById('timer-bar-container').classList.remove('hidden');
+        }
+
+        function enterExam() {
+            renderQuestions();
+            showStep(3);
+            isExamActive = true;
+        }
+
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            
+            updateTimerDisplay();
+            timerInterval = setInterval(() => {
+                timerSeconds--;
+                updateTimerDisplay();
+
+                if (timerSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    submitExam();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timerSeconds / 60);
+            const seconds = timerSeconds % 60;
+            const formatted = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            document.getElementById('timer-display').textContent = formatted;
+        }
+
+        function triggerCancellationWarning() {
+            document.getElementById('cancellation-modal').classList.remove('hidden');
+        }
+
+        function confirmCancellation() {
+            document.getElementById('cancellation-modal').classList.add('hidden');
+            resetToInitial();
+        }
+
+        // Anti-cheat tab switch & focus loss monitoring
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && (currentStep === 2 || currentStep === 3)) {
+                triggerCancellationWarning();
+            }
+        });
+
+        function submitExam() {
+            isExamActive = false;
+            clearInterval(timerInterval);
+            document.getElementById('timer-bar-container').classList.add('hidden');
+
+            let score = 0;
+            questionsData.forEach(q => {
+                if (selectedAnswers[q.id] === q.correctAnswer) {
+                    score++;
+                }
+            });
+
+            const percentage = Math.round((score / questionsData.length) * 100);
+            const passed = score >= 2; // 40% pass mark (2/5)
+
+            // Render Score Result
+            document.getElementById('score-display').textContent = `${score} / ${questionsData.length} Marks`;
+            document.getElementById('percentage-display').textContent = `Percentage: ${percentage}%`;
+
+            const statusBadge = document.getElementById('status-badge');
+            const scoreIcon = document.getElementById('score-icon');
+
+            if (passed) {
+                statusBadge.textContent = "Status: PASSED";
+                statusBadge.className = "mt-3 inline-block px-4 py-1 rounded-full text-xs font-bold uppercase bg-emerald-100 text-emerald-800 border border-emerald-300";
+                scoreIcon.className = "text-4xl sm:text-5xl mb-3 text-emerald-600";
+                scoreIcon.innerHTML = `<i class="fa-solid fa-circle-check"></i>`;
+            } else {
+                statusBadge.textContent = "Status: FAILED";
+                statusBadge.className = "mt-3 inline-block px-4 py-1 rounded-full text-xs font-bold uppercase bg-rose-100 text-rose-800 border border-rose-300";
+                scoreIcon.className = "text-4xl sm:text-5xl mb-3 text-rose-600";
+                scoreIcon.innerHTML = `<i class="fa-solid fa-circle-xmark"></i>`;
+            }
+
+            showStep(4);
+        }
+
+        function resetToInitial() {
+            clearInterval(timerInterval);
+            timerSeconds = 17 * 60;
+            selectedAnswers = {};
+            isExamActive = false;
+            document.getElementById('timer-bar-container').classList.add('hidden');
+            showStep(1);
+        }
+
+        // Initialize state on load
+        window.onload = function() {
+            showStep(1);
+        };
+    </script>
+</body>
+</html>
